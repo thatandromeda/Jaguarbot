@@ -59,13 +59,15 @@ In your local repo, copy <code>settings.py</code> to <code>mysettings.py</code>.
    * when you get your ACCESS_KEY and ACCESS_SECRET, copy them into mysettings.py.
 
 ## launchd
-Jaguarbot is designed to run once daily.  I thought I'd do this with the standard Unix <code>cron</code> command, but there are two problems with that:
+Jaguarbot is designed to run once daily.  I thought I'd do this with the standard *nix <code>cron</code> command, but there are two problems with that:
+
 * my laptop is often asleep, and I didn't know how cron and sleep would interact; googling suggested the answer was, "badly"
 * I couldn't get my dev env set up on an always-on machine, per above
 
 launchd is Apple's One Time-Based Daemon To Rule Them All thing, replacing cron and initd and a bunch of stuff.  It has the awesome feature that it handles sleep gracefully; if a job was supposed to happen when the computer was asleep it queues it up and executes it on next wake.  It has the annoying feature that it has its own special-snowflake XML syntax that is copiously, yet unhelpfully, documented.
 
 Anyway, to make it run you will need to...
+
 * create a .plist file (see mine in this repo)
 * put it in one of the magical locations where OS X looks for .plist files (mine is in /Library/LaunchDaemons)
 * tell OS X to find it -- <code>launchctl load /path/to/filename</code>
