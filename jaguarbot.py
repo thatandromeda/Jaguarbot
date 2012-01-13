@@ -80,14 +80,11 @@ for date in dates:
 cursor.close()
 conn.close()
   
-# figure out how to handle it when multiple objects get returned by the first select
-## what IS a cursor, anyway?
-## see fetchone/fetchall statements
-# next steps:
-# talk to blake about installing tweepy, other bits
-# run as cron job -- talk to him about that too
-# sleep for multiple events as needed
-# how to handle long-duration events?
-# unicode handling
-# issue t.co max length request and update truncation code accordingly
-# does it matter that I'm only fetching the first thing returned for my second 2 SQL queries?
+# TODO
+## figure out how to handle it when multiple objects get returned by the first select
+## decide how to handle long-duration events
+## deal with unicode characters (e.g. in El dia)
+## issue t.co max length request and update truncation code accordingly
+## does it matter that I'm only fetching the first thing returned for my second 2 SQL queries?
+## filter ALDirect out of six-months-in-advance warnings; consider how to use tags or other data to give more intelligent advance warnings
+## find out how frequently I can hit Twitter before it decides I'm evil and test for high-update times/update sleep() accordingly
