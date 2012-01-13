@@ -8,9 +8,9 @@ These instructions do assume you are reasonably comfortable with the command lin
 ### Mac OS 10.7.2.
 
 * Install Xcode
-** must register as an Apple developer
-** free via http://developer.apple.com/xcode/
-** you need this anyway to do any coding on a Mac; without it you run into surprising and incomprehensible errors
+    * must register as an Apple developer
+    * free via http://developer.apple.com/xcode/
+    * you need this anyway to do any coding on a Mac; without it you run into surprising and incomprehensible errors
 * Install pip: <code>sudo easy_install pip</code>
 ** you can live without it, but this package manager makes it vastly easier to install Python libraries
 * Install tweepy: <code>pip install tweepy</code>
