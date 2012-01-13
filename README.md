@@ -12,27 +12,27 @@ These instructions do assume you are reasonably comfortable with the command lin
     * free via http://developer.apple.com/xcode/
     * you need this anyway to do any coding on a Mac; without it you run into surprising and incomprehensible errors
 * Install pip: <code>sudo easy_install pip</code>
-** you can live without it, but this package manager makes it vastly easier to install Python libraries
+    * you can live without it, but this package manager makes it vastly easier to install Python libraries
 * Install tweepy: <code>pip install tweepy</code>
-** If you want to browse tweepy's code: http://code.google.com/p/tweepy/
+   * If you want to browse tweepy's code: http://code.google.com/p/tweepy/
 * Install MySQLdb: <code>pip install mysql-python</code>
-** If mysql_config is not on your path, this will fail
-*** On my machine, <code>echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile</code>, then reopening my terminal window, was the needed incantation
-** This may fail with a "wrong architecture" error, in which case you need the 64-bit version of mysql:
-*** shut down any currently running mysql server (System Preferences > MySQL or <code> mysqladmin -u user -ppassword shutdown</code>)
-*** download from http://dev.mysql.com/downloads/mysql/
-*** make sure to get the .dmg, not the .tar.gz -- easier
-*** you don't actually have to create an account; there's an easy-to-miss "no thanks" link at the bottom
-*** reinstall mysql-python after mysql installation completes
-** The useful reference for MySQLdb: http://www.kitebird.com/articles/pydbapi.html
+   * If mysql_config is not on your path, this will fail
+      * On my machine, <code>echo 'export PATH=/usr/local/mysql/bin:$PATH' >> ~/.bash_profile</code>, then reopening my terminal window, was the needed incantation
+   * This may fail with a "wrong architecture" error, in which case you need the 64-bit version of mysql:
+      * shut down any currently running mysql server (System Preferences > MySQL or <code> mysqladmin -u user -ppassword shutdown</code>)
+      * download from http://dev.mysql.com/downloads/mysql/
+      * make sure to get the .dmg, not the .tar.gz -- easier
+      * you don't actually have to create an account; there's an easy-to-miss "no thanks" link at the bottom
+      * reinstall mysql-python after mysql installation completes
+   * The useful reference for MySQLdb: http://www.kitebird.com/articles/pydbapi.html
 * Create a user and database in mysql
-** <code>mysql</code>
-** <code>CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';</code>
-** <code>CREATE DATABASE yourdb;</code>
-** <code>GRANT ALL ON yourdb.* TO 'usename'@'localhost';</code>
-** You can also do this with a graphical front end via phpmyadmin
-** Finally, you'll need to get your data from somewhere; in my case I had an SQL dump (<code>jaguars.sql</code>) of my existing Drupal database for http://jaguars.andromedayelton.com, so I imported that into my local db (named <code>jaguars</code>) with <code>mysql -u myusername -pmypassword jaguars < jaguars.sql</code>
-*** note that there IS a space after -u, but there is NOT a space after -p
+   * <code>mysql</code>
+   * <code>CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';</code>
+   * <code>CREATE DATABASE yourdb;</code>
+   * <code>GRANT ALL ON yourdb.* TO 'usename'@'localhost';</code>
+   * You can also do this with a graphical front end via phpmyadmin
+   * Finally, you'll need to get your data from somewhere; in my case I had an SQL dump (<code>jaguars.sql</code>) of my existing Drupal database for http://jaguars.andromedayelton.com, so I imported that into my local db (named <code>jaguars</code>) with <code>mysql -u myusername -pmypassword jaguars < jaguars.sql</code>
+      * note that there IS a space after -u, but there is NOT a space after -p
 
 ### Other
 
@@ -51,12 +51,12 @@ In your local repo, copy <code>settings.py</code> to <code>mysettings.py</code>.
 
 ## Authorizing with Twitter
 * Register as a developer at https://dev.twitter.com/ .
-** Copy your CONSUMER_SECRET and CONSUMER_KEY into mysettings.py
+   * Copy your CONSUMER_SECRET and CONSUMER_KEY into mysettings.py
 * Create an account for your app to post to (unless you want it to post to your own timeline, but that'd be weird)
 * Follow these instructions to create an app and authorize it to post to your account: http://talkfast.org/2010/05/31/twitter-from-the-command-line-in-python-using-oauth
-** note that I've modified his one-off utility script here as <code>get_access_key.py</code>
-** Make sure you're logged in _as the target account_ when you do the in-browser step in these directions
-** when you get your ACCESS_KEY and ACCESS_SECRET, copy them into mysettings.py.
+   * note that I've modified his one-off utility script here as <code>get_access_key.py</code>
+   * Make sure you're logged in _as the target account_ when you do the in-browser step in these directions
+   * when you get your ACCESS_KEY and ACCESS_SECRET, copy them into mysettings.py.
 
 ## launchd
 Jaguarbot is designed to run once daily.  I thought I'd do this with the standard *nix <code>cron</code> command, but there are two problems with that:
@@ -70,6 +70,6 @@ Anyway, to make it run you will need to:
 * put it in one of the magical locations where OS X looks for .plist files (mine is in /Library/LaunchDaemons)
 * tell OS X to find it -- <code>launchctl load /path/to/filename</code>
 * I'm still figuring out what I need to do to ensure it automatically gets noticed on reboot.  I think the needed steps are some combination of:
-** <code>chmod 0755 yourfilename</code>
-** <code>sudo chown root yourfilename</code> (if you put it in /Library/LaunchAgents rather than LaunchDaemons, this may not be needed)
-** add <code>launchctl load /path/to/filename</code> to /etc/launchd.conf (which you may have to create; needs sudo) 
+   * <code>chmod 0755 yourfilename</code>
+   * <code>sudo chown root yourfilename</code> (if you put it in /Library/LaunchAgents rather than LaunchDaemons, this may not be needed)
+   * add <code>launchctl load /path/to/filename</code> to /etc/launchd.conf (which you may have to create; needs sudo) 
