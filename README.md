@@ -29,7 +29,7 @@ These instructions do assume you are reasonably comfortable with the command lin
    * <code>mysql</code>
    * <code>CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';</code>
    * <code>CREATE DATABASE yourdb;</code>
-   * <code>GRANT ALL ON yourdb.* TO 'usename'@'localhost';</code>
+   * <code>GRANT ALL ON yourdb.* TO 'username'@'localhost';</code>
    * You can also do this with a graphical front end via phpmyadmin
    * Finally, you'll need to get your data from somewhere; in my case I had an SQL dump (<code>jaguars.sql</code>) of my existing Drupal database for http://jaguars.andromedayelton.com, so I imported that into my local db (named <code>jaguars</code>) with <code>mysql -u myusername -pmypassword jaguars < jaguars.sql</code>
       * note that there IS a space after -u, but there is NOT a space after -p
@@ -65,7 +65,7 @@ Jaguarbot is designed to run once daily.  I thought I'd do this with the standar
 
 launchd is Apple's One Time-Based Daemon To Rule Them All thing, replacing cron and initd and a bunch of stuff.  It has the awesome feature that it handles sleep gracefully; if a job was supposed to happen when the computer was asleep it queues it up and executes it on next wake.  It has the annoying feature that it has its own special-snowflake XML syntax that is copiously, yet unhelpfully, documented.
 
-Anyway, to make it run you will need to:
+Anyway, to make it run you will need to...
 * create a .plist file (see mine in this repo)
 * put it in one of the magical locations where OS X looks for .plist files (mine is in /Library/LaunchDaemons)
 * tell OS X to find it -- <code>launchctl load /path/to/filename</code>
