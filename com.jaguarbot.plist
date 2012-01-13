@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<plist version="1.0">
+
+<dict>
+
+    <key>Label</key>
+
+    <string>com.jaguarbot</string>
+
+    <key>ProgramArguments</key>
+
+    <array>
+
+        <string>python</string>
+        
+        <!-- fill in your local values -->
+        <string>/PATH/TO/YOUR/jaguarbot.py</string>
+
+    </array>
+
+    <key>StartCalendarInterval</key>
+
+    <dict>
+		<!-- mine runs at 11:45am local time; you can change these integers to whatever you like; syntax also exists for month, year, etc. -->
+        <key>Minute</key>
+
+        <integer>45</integer>
+
+        <key>Hour</key>
+
+        <integer>11</integer>
+
+    </dict>
+        
+</dict>
+
+</plist>
